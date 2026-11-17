@@ -82,3 +82,6 @@ mapgen_helper.is_ground_content = function(c_node) -- If false, the cave generat
 	end
 	return is_ground_content[c_node]
 end
+
+--mapgen thread functions
+core.register_mapgen_script(MP.."/initmg.lua")
