@@ -1,3 +1,4 @@
+--copy over basically the whole thing to mapgen thread
 mapgen_helper = {}
 
 mapgen_helper.mapgen_seed = tonumber(minetest.get_mapgen_setting("seed"))
@@ -6,19 +7,17 @@ mapgen_helper.mapgen_seed = tonumber(minetest.get_mapgen_setting("seed"))
 mapgen_helper.block_size = tonumber(minetest.get_mapgen_setting("chunksize")) * 16
 
 local MP = minetest.get_modpath(minetest.get_current_modname())
-local function mgdofile(file)
-    core.register_mapgen_script(file)
-end
-mgdofile(MP.."/bounding_boxes.lua")
-mgdofile(MP.."/random.lua")
-mgdofile(MP.."/voxelarea_iterator.lua")
-mgdofile(MP.."/voxeldata.lua")
-mgdofile(MP.."/region_functions.lua")
-mgdofile(MP.."/lines.lua")
-mgdofile(MP.."/place_schematic.lua")
---mgdofile(MP.."/noise_manager.lua")
---mgdofile(MP.."/metrics.lua")
---mgdofile(MP.."/log_location.lua")
+
+dofile(MP.."/bounding_boxes.lua")
+dofile(MP.."/random.lua")
+dofile(MP.."/voxelarea_iterator.lua")
+dofile(MP.."/voxeldata.lua")
+dofile(MP.."/region_functions.lua")
+dofile(MP.."/lines.lua")
+dofile(MP.."/place_schematic.lua")
+dofile(MP.."/noise_managermg.lua")
+dofile(MP.."/metricsmg.lua") --TODO make this work
+dofile(MP.."/log_locationmg.lua")--TODO make this work
 
 local map_data = {}
 local map_param2_data = {}
